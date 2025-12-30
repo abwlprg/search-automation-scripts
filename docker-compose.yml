@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  tester2:
+    build: .
+    # Command to run the web server
+    command: node index.js
+    # Mount the current directory to see output files
+    volumes:
+      - .:/app
+    # Expose port 3000
+    ports:
+      - "3000:3000"
+    # Set environment variables (optional, can be set in the web interface)
+    environment:
+      - GOOGLE_API_KEY=AIzaSyCK_rv0DW4euOnJjOb-dnMnBWi1naI7B7c
+      - SEARCH_ENGINE_ID=16f02ed784ed24bc6
+      - QUERY=Leah Scully
+      - DOMAIN=https://veteranwithacamera.com/leah-scully
+      # Add BING_SUBSCRIPTION_KEY if available
+      # - BING_SUBSCRIPTION_KEY=your_bing_key
+    # If you need to run in interactive mode or see output
+    stdin_open: true
+    tty: true

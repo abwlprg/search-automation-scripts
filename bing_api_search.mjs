@@ -3,7 +3,7 @@ import fetch from 'node-fetch'; // You'll need to install: npm install node-fetc
 const SUBSCRIPTION_KEY = process.env.BING_SUBSCRIPTION_KEY; // Get from Azure Cognitive Services
 const QUERY = process.env.QUERY || 'YOUR SEARCH QUERY';
 const TARGET_DOMAIN = process.env.DOMAIN || 'example.com';
-const ITERATIONS = Number(process.env.ITERATIONS || 50);
+const ITERATIONS = Number(process.env.ITERATIONS || 10);
 const COOLDOWN_MS = Number(process.env.COOLDOWN_MS || 800);
 
 if (!SUBSCRIPTION_KEY) {
@@ -38,6 +38,7 @@ function sleep(ms) {
 
   for (let i = 1; i <= ITERATIONS; i++) {
     console.log(`Iteration ${i}`);
+    console.log(`Progress: ${i}/${ITERATIONS}`);
 
     const url = `https://api.bing.microsoft.com/v7.0/search?q=${encodeURIComponent(QUERY)}&count=10`;
 
